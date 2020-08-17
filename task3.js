@@ -1,6 +1,6 @@
 let i, j;
-const n = 10; 
-const m = 10; //A[0].length
+const n = 10;
+const m = 10;
 let A = [];
 let sumCols = 0;
 
@@ -16,7 +16,7 @@ for (i = 0; i < A.length; i++) {
     document.write(A[i] + '<br>');
 }
 
-//let copyA = A.slice();
+document.write('<br>');
 
 //сумма столбцов
 for (i = 0; i < n; i++) {
@@ -27,13 +27,24 @@ for (i = 0; i < n; i++) {
     sumCols = 0;
 }
 
-////удаление столбца
-//for(i = 0; i < n; i++){
-//    for(j = 0; j < m; j++){
-//        if(sumCols < 10){
-//           A[i].splice(A[j], 1);
-//        }
-//    }
-//}
+//удаление столбцов
+for (i = n - 1; i >= 0; i--) {
+    sumCols = 0;
+    for (j = 0; j < m; j++) {
+        sumCols += A[j][i];
+    }
+    if (sumCols < 0) {
+        for (j = 0; j < m; j++) {
+            A[j].splice(i, 1);
+        }
+    }
+}
+
+document.write('<br><br>После очистки:<br>');
+
+for (i = 0; i < A.length; i++) {
+    document.write(A[i] + '<br>');
+}
+
 
 
